@@ -29,5 +29,4 @@ Ce prototype est un travail en cours et peut nécessiter des ajustements pour fo
 ## Licence
 Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier LICENSE.
 
-Replace the content of each section with relevant information or instructions as needed. Let me know if you need further assistance!
 
