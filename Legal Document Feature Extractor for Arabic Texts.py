@@ -50,10 +50,6 @@ image1
 imageGris = image1.convert("L")
 imageGris
 
-# Amélioration du contraste
-image_contraste_ameliore = ImageOps.equalize(imageGris)
-image_contraste_ameliore
-
 # Appliquer un filtre de lissage moyen pour atténuer le bruit
 image_sans_bruit = imageGris.filter(ImageFilter.MedianFilter(size=3))
 image_sans_bruit
@@ -75,12 +71,12 @@ if os.path.exists("/chemin/vers/tessdata/ara.traineddata"):
 else:
     print("Erreur lors de l'installation des données de formation pour la langue arabe.")
 
-"""Extraction du texte"""
+"""**Extraction du texte**"""
 
 texte = pytesseract.image_to_string(image_sans_bruit, lang='ara')
 texte
 
-##text processing
+"""**Traitement du text**"""
 
 # Load stopwords in Arabic
 stop_words = set(stopwords.words('arabic'))
@@ -110,6 +106,8 @@ for e in T_clean:
     txt += " ".join(e) + " "
 
 print(txt)
+
+"""**Extraction de caracteristiques**"""
 
 def extraire_caracteristiques(texte):
     # Initialize dictionaries to store extracted features
@@ -150,6 +148,8 @@ for caractéristique, valeurs in caractéristiques_extraites.items():
     print(caractéristique + ":")
     for valeur in valeurs:
         print("-", valeur)
+
+"""**Interface en ligne de commande**"""
 
 def main():
 
