@@ -1,5 +1,6 @@
 # Legal-Document-Feature-Extractor-for-Arabic-Texts
 Ce projet vise à développer un prototype capable de traiter des documents juridiques numérisés en arabe, qu'ils soient manuscrits ou tapés, afin d'extraire des caractéristiques clés pertinentes pour un type spécifique d'affaire juridique.
+Ce prototype a été développé dans le cadre d'un projet d'extracteur de caractéristiques de documents juridiques en utilisant Python.
 ## Business request Overview
 ## Installation
 
@@ -19,15 +20,6 @@ Assurez-vous d'avoir une image de document juridique en arabe.
 Exécutez le script extracteur.py.
 Suivez les instructions pour entrer le chemin de l'image.
 Le texte sera extrait du document et affiché dans la console.
-
-
-Here's your content formatted in Markdown for a GitHub README:
-
-markdown
-Copy code
-# Prototype d'Extracteur de Caractéristiques de Documents Juridiques
-
-Ce prototype a été développé dans le cadre d'un projet d'extracteur de caractéristiques de documents juridiques en utilisant Python.
 
 ## Installation
 
