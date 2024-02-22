@@ -24,26 +24,21 @@ import pytesseract
 from pytesseract import Output
 from PIL import Image ,ImageOps ,ImageFilter , ImageDraw
 import cv2
-from google.colab.patches import cv2_imshow
 import nltk
-from nltk.data import find
 nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
 nltk.download('stopwords')
 nltk.download('wordnet')
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 import string
 from pytesseract import get_tesseract_version
 import os
 import re
 
-"""**Prétraitement de l'image**"""
+"""**Prétraitement de l'image texte en gras**"""
 
 image1 = Image.open('image 1.jpg')
 
-#check image load
 if image1 is None:
     print("Impossible de charger l'image.")
 else:
@@ -80,12 +75,12 @@ if os.path.exists("/chemin/vers/tessdata/ara.traineddata"):
 else:
     print("Erreur lors de l'installation des données de formation pour la langue arabe.")
 
-"""**Extraction du texte**"""
+"""Extraction du texte"""
 
 texte = pytesseract.image_to_string(image_sans_bruit, lang='ara')
 texte
 
-"""**Traitement du texte**"""
+##text processing
 
 # Load stopwords in Arabic
 stop_words = set(stopwords.words('arabic'))
@@ -107,10 +102,17 @@ def preprocess(sentence):
 T_clean = [preprocess(sentence) for sentence in sentences]
 T_clean
 
-"""**Extraction des caractéristiques et de formatage de sortie**"""
+print("Contenu de T_clean :", T_clean)
+
+txt = ""
+
+for e in T_clean:
+    txt += " ".join(e) + " "
+
+print(txt)
 
 def extraire_caracteristiques(texte):
-    # Initialiser les dictionnaires pour stocker les caractéristiques extraites
+    # Initialize dictionaries to store extracted features
     caractéristiques = {
         "Type de Document": [],
         "Dates": [],
@@ -120,7 +122,7 @@ def extraire_caracteristiques(texte):
         "Les sujet": []
     }
 
-    # Modèles de regex pour chaque caractéristique
+    # Regex templates for each feature
     motifs = {
         "Type de Document": r"Type\s+de\s+Document\s*:\s*(.+)",
         "Dates": r"Dates\s*:\s*(.+)",
@@ -130,7 +132,7 @@ def extraire_caracteristiques(texte):
         "Les sujet": r"Les\s+sujet\s*:\s*(.+)"
     }
 
-    # Parcourir chaque caractéristique et extraire les correspondances
+   # Browse each feature and extract matches
     for caractéristique, motif in motifs.items():
         correspondances = re.findall(motif, texte, re.IGNORECASE)
         if correspondances:
@@ -140,38 +142,33 @@ def extraire_caracteristiques(texte):
 
 
 
-# Extraire les caractéristiques du texte d'exemple
-caractéristiques_extraites = extraire_caracteristiques(texte)
+# Extract Sample Text Features
+caractéristiques_extraites = extraire_caracteristiques(txt)
 
-# Afficher les caractéristiques extraites
+# Display the extracted features
 for caractéristique, valeurs in caractéristiques_extraites.items():
     print(caractéristique + ":")
     for valeur in valeurs:
         print("-", valeur)
 
-"""**Interface en ligne de commande**"""
-
 def main():
-    # Clear the console screen
-    os.system('cls' if os.name == 'nt' else 'clear')
 
     print("Bienvenue dans l'outil d'extraction de texte !")
-    print("Veuillez entrer le chemin vers le document numérisé :")
+    chemin_document = input("Veuillez entrer le chemin vers le document numérisé : ")
+    image = cv2.imread(chemin_document)
 
-    # Ask user to enter image path
-    image_path = input("entrez le chemin de l’image")
-
-    # Check if file exists
-    if not os.path.exists(image_path):
-        print("Le fichier spécifié n'existe pas.")
-        return
 
     # Extract text from document
-    texte_extrait = extract_text(image_path)
+    text_extr= pytesseract.image_to_string(image, lang='ara')
 
     # Display extracted text
     print("\nTexte extrait du document :")
-    print(texte_extrait)
+    print(text_extr)
+
+    # Extract caractrs from text
+    carac_extrait = caractéristiques_extraites(text_extr)
+
+
 
 if __name__ == "__main__":
     main()
