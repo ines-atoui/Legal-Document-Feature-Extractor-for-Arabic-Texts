@@ -6,7 +6,6 @@ Ce prototype a été développé dans le cadre d'un projet d'extracteur de carac
 
 Pour exécuter ce prototype, assurez-vous d'avoir Python installé sur votre machine. Ensuite, vous pouvez installer les dépendances nécessaires en exécutant les commandes suivantes dans votre terminal :
 
-```bash
 pip install pytesseract ArabicOcr tesseract
 Vous devrez également installer Tesseract OCR et les bibliothèques associées :
 sudo apt install tesseract-ocr libtesseract-dev tesseract-ocr-ara
@@ -25,11 +24,9 @@ Pour utiliser ce prototype :
 
 Pour exécuter ce prototype, assurez-vous d'avoir Python installé sur votre machine. Ensuite, vous pouvez installer les dépendances nécessaires en exécutant les commandes suivantes dans votre terminal :
 
-```bash
 pip install pytesseract ArabicOcr tesseract
 Vous devrez également installer Tesseract OCR et les bibliothèques associées :
 
-bash
 sudo apt install tesseract-ocr libtesseract-dev tesseract-ocr-ara
 
 ##Utilisation
