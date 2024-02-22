@@ -15,11 +15,11 @@ sudo apt install tesseract-ocr libtesseract-dev tesseract-ocr-ara
 ##Utilisation
 Pour utiliser ce prototype :
 
-Clonez ce dépôt sur votre machine.
-Assurez-vous d'avoir une image de document juridique en arabe.
-Exécutez le script extracteur.py.
-Suivez les instructions pour entrer le chemin de l'image.
-Le texte sera extrait du document et affiché dans la console.
+1. Clonez ce dépôt sur votre machine.
+2. Assurez-vous d'avoir une image de document juridique en arabe.
+3. Exécutez le script extracteur.py.
+4. Suivez les instructions pour entrer le chemin de l'image.
+5. Le texte sera extrait du document et affiché dans la console.
 
 ## Installation
 
